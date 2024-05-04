@@ -1,0 +1,359 @@
+Task -3
+
+
+Anonymous function & IIFE
+
+
+a. Print odd numbers in an array
+// Using an anonymous function:
+
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+
+let printOdd = function(arr) {
+     for (let i = 0; i < arr.length; i++) {
+         if (arr[i] % 2 !== 0) {
+             console.log(arr[i]);
+         }
+     }
+};
+printOdd(arr);
+
+
+// Using an IIFE:
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+
+(function(arr) {
+     for (let i = 0; i < arr.length; i++) {
+         if (arr[i] % 2 !== 0) {
+             console.log(arr[i]);
+         }
+     }
+})(arr);
+b. Convert all the strings to title caps in a string array
+
+
+// Using an anonymous function:
+
+
+let stringArray = ["hello", "world", "how", "are", "you"];
+
+
+let convertToTitleCaps = function(arr) {
+     for (let i = 0; i < arr.length; i++) {
+         arr[i] = arr[i].charAt(0).toUpperCase() +
+arr[i].slice(1).toLowerCase();
+     }
+     return arr;
+};
+
+
+console.log(convertToTitleCaps(stringArray));
+
+
+// Using an IIFE:
+
+
+let stringArray = ["hello", "world", "how", "are", "you"];
+
+
+(function(arr) {
+     for (let i = 0; i < arr.length; i++) {
+         arr[i] = arr[i].charAt(0).toUpperCase() +
+arr[i].slice(1).toLowerCase();
+     }
+     console.log(arr);
+})(stringArray);
+C. Sum of all numbers in an array
+
+
+// Using anonymous function
+const array = [1, 2, 3, 4, 5];
+
+
+const sum = function(arr) {
+     let total = 0;
+     arr.forEach(num => {
+           total += num;
+     });
+     return total;
+};
+
+
+console.log(sum(array));
+
+
+// Using IIFE
+const sumIIFE = (function(arr) {
+     let total = 0;
+     arr.forEach(num => {
+           total += num;
+     });
+     return total;
+})(array);
+
+
+console.log(sumIIFE);
+d. Return all the prime numbers in an array
+
+
+// Using anonymous function
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+
+const getPrimes = function(arr) {
+     const isPrime = function(num) {
+          if (num <= 1) return false;
+          for (let i = 2; i <= Math.sqrt(num); i++) {
+              if (num % i === 0) return false;
+          }
+          return true;
+     };
+
+
+     return arr.filter(num => isPrime(num));
+};
+console.log(getPrimes(array));
+
+
+// Using IIFE
+const primeNumbers = (function(arr) {
+     const isPrime = function(num) {
+          if (num <= 1) return false;
+          for (let i = 2; i <= Math.sqrt(num); i++) {
+              if (num % i === 0) return false;
+          }
+          return true;
+     };
+
+
+     return arr.filter(num => isPrime(num));
+})(array);
+
+
+console.log(primeNumbers);
+
+
+e.return all the palindromes in an array
+
+
+// Using anonymous function
+const array = ["hello", "level", "world", "racecar", "madam"];
+
+
+const getPalindromes = function(arr) {
+     const isPalindrome = function(str) {
+          return str === str.split('').reverse().join('');
+     };
+
+
+     return arr.filter(word => isPalindrome(word));
+};
+
+
+console.log(getPalindromes(array));
+
+
+// Using IIFE
+const palindromes = (function(arr) {
+     const isPalindrome = function(str) {
+          return str === str.split('').reverse().join('');
+     };
+     return arr.filter(word => isPalindrome(word));
+})(array);
+
+
+console.log(palindromes);
+
+
+f. Return median of two sorted arrays of the same size
+
+
+// Using anonymous function
+const array1 = [1, 3, 5, 7, 9];
+const array2 = [2, 4, 6, 8, 10];
+
+
+const findMedianSortedArrays = function(arr1, arr2) {
+     const mergedArray = arr1.concat(arr2).sort((a, b) => a - b);
+     const length = mergedArray.length;
+     const middleIndex = Math.floor(length / 2);
+
+
+     if (length % 2 === 0) {
+         return (mergedArray[middleIndex - 1] +
+mergedArray[middleIndex]) / 2;
+     } else {
+         return mergedArray[middleIndex];
+     }
+};
+
+
+console.log(findMedianSortedArrays(array1, array2));
+// Using IIFE
+const median = (function(arr1, arr2) {
+     const mergedArray = arr1.concat(arr2).sort((a, b) => a - b);
+     const length = mergedArray.length;
+     const middleIndex = Math.floor(length / 2);
+
+
+     if (length % 2 === 0) {
+         return (mergedArray[middleIndex - 1] +
+mergedArray[middleIndex]) / 2;
+     } else {
+         return mergedArray[middleIndex];
+     }
+})(array1, array2);
+
+
+console.log(median);
+
+
+g. Remove duplicates from an array
+
+
+// Using anonymous function
+const array = [1, 2, 3, 2, 4, 5, 6, 5];
+
+
+const removeDuplicates = function(arr) {
+     return arr.filter((item, index) => arr.indexOf(item) === index);
+};
+
+
+console.log(removeDuplicates(array));
+// Using IIFE
+const uniqueArray = (function(arr) {
+     return arr.filter((item, index) => arr.indexOf(item) === index);
+})(array);
+
+
+console.log(uniqueArray);
+
+
+h. Rotate an array by k times
+
+
+// Using anonymous function
+const array = [1, 2, 3, 4, 5];
+const k = 2;
+
+
+const rotateArray = function(arr, k) {
+     const len = arr.length;
+     const rotations = k % len; // Handle cases where k > array
+length
+
+
+     const rotatedArray = arr.slice(rotations).concat(arr.slice(0,
+rotations));
+     return rotatedArray;
+};
+
+
+console.log(rotateArray(array, k));
+
+
+// Using IIFE
+const rotatedArray = (function(arr, k) {
+     const len = arr.length;
+     const rotations = k % len; // Handle cases where k > array
+length
+
+
+     const rotatedArray = arr.slice(rotations).concat(arr.slice(0,
+rotations));
+     return rotatedArray;
+})(array, k);
+
+
+console.log(rotatedArray);
+
+
+Arrow Functions
+
+
+a. Print odd numbers in an array
+
+
+// Program to print odd numbers in an array
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+
+const printOddNumbers = (arr) => {
+     arr.forEach(num => {
+           if (num % 2 !== 0) {
+               console.log(num);
+           }
+     });
+};
+
+
+printOddNumbers(array);
+b. Convert all the strings to title caps in a string array
+
+
+const stringArray = ["hello", "world", "javascript", "example"];
+
+
+const titleCaps = arr => arr.map(str =>
+str.charAt(0).toUpperCase() + str.slice(1));
+
+
+const result = titleCaps(stringArray);
+console.log(result);
+
+
+C. Sum of all numbers in an array
+
+
+// Program to calculate the sum of all numbers in an array
+const array = [1, 2, 3, 4, 5];
+
+
+const sum = (arr) => arr.reduce((total, num) => total + num, 0);
+
+
+console.log(sum(array));
+
+
+d. Return all the prime numbers in an array
+
+
+// Program to return all prime numbers in an array
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+
+const isPrime = (num) => {
+  if (num <= 1) return false;
+     for (let i = 2; i <= Math.sqrt(num); i++) {
+         if (num % i === 0) return false;
+     }
+     return true;
+};
+
+
+const getPrimes = (arr) => arr.filter(num => isPrime(num));
+
+
+console.log(getPrimes(array));
+
+
+e. Return all the palindromes in an array
+
+
+// Program to return all palindromes in an array
+const array = ["hello", "level", "world", "racecar", "madam"];
+
+
+const isPalindrome = (str) => str === str.split('').reverse().join('');
+
+
+const getPalindromes = (arr) => arr.filter(word =>
+isPalindrome(word));
+
+
+console.log(getPalindromes(array));
+
